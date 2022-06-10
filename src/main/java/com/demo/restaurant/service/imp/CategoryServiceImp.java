@@ -1,5 +1,6 @@
 package com.demo.restaurant.service.imp;
 
+import com.demo.restaurant.enums.CategoryErrorMessage;
 import com.demo.restaurant.exception.NonUniqueResultException;
 import com.demo.restaurant.exception.ResourceNotFoundException;
 import com.demo.restaurant.model.Category;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.demo.restaurant.enums.CategoryErrorMessage.CATEGORY_NOT_FOUND;
+import static java.lang.String.*;
 
 @Service
 public class CategoryServiceImp implements CategoryService {
@@ -24,18 +28,20 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public Category save(Category category) {
         Optional<Category> optionalCategory = categoryRepository.findByName(category.getName());
-        if (optionalCategory.isPresent()) throw new NonUniqueResultException("Duplicate category name");
+        if (optionalCategory.isPresent()) throw new NonUniqueResultException(format(CategoryErrorMessage.CATEGORY_DUPLICATE.getMessage(), category.getName()));
         return categoryRepository.save(category);
     }
 
     @Override
-    public void deleteById(Long id) {
-        categoryRepository.deleteById(id);
+    public Category deleteById(Long id) {
+        Category category = findById(id);
+        categoryRepository.deleteById(category.getId());
+        return category;
     }
 
     @Override
-    public Optional<Category> findById(Long id) {
-        return categoryRepository.findById(id);
+    public Category findById(Long id) {
+        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(format(CATEGORY_NOT_FOUND.getMessage(), id)));
     }
 
     @Override
@@ -46,7 +52,7 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public Category updateCategory(Category updateCategory) {
         Optional<Category> optionalCategory = categoryRepository.findById(updateCategory.getId());
-        if (!optionalCategory.isPresent()) throw new ResourceNotFoundException("Category not found");
+        if (!optionalCategory.isPresent()) throw new ResourceNotFoundException(format(CategoryErrorMessage.CATEGORY_NOT_FOUND.getMessage(), updateCategory.getId()));
 
         Category category = optionalCategory.get();
         category.setName(updateCategory.getName());

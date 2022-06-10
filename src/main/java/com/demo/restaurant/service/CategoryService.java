@@ -10,8 +10,8 @@ import java.util.Optional;
 @Service
 public interface CategoryService {
     Category save(Category category);
-    void deleteById(Long id);
-    Optional<Category> findById(Long id);
+    Category deleteById(Long id);
+    Category findById(Long id);
     List<Category> findAll();
     Category updateCategory (Category category);
 }

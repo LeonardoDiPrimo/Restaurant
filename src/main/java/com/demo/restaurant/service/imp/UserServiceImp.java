@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.demo.restaurant.enums.UserErrorMessage.*;
+import static java.lang.String.format;
+
 @Service
 public class UserServiceImp implements UserService {
 
@@ -30,7 +33,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User save(User user) {
         Optional<User> optionalUser = userRepository.findByEmail(user.getEmail());
-        if (optionalUser.isPresent()) throw new NonUniqueResultException("Duplicate email");
+        if (optionalUser.isPresent()) throw new NonUniqueResultException(format(USER_DUPLICATE.getMessage(), user.getEmail()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -46,7 +49,7 @@ public class UserServiceImp implements UserService {
             }
             return optionalUser.get();
         }
-        else throw new ResourceNotFoundException("User not found");
+        else throw new ResourceNotFoundException(format(USER_NOT_FOUND.getMessage(), id));
     }
 
     @Override
@@ -61,13 +64,13 @@ public class UserServiceImp implements UserService {
         if (optionalUser.isPresent() && passwordEncoder.matches(password, optionalUser.get().getPassword()) &&
                 !optionalUser.get().getDeprecated()) return optionalUser.get();
 
-        else throw new UnauthorizedAccessException("Unauthorized User");
+        else throw new UnauthorizedAccessException(USER_AUTHENTICATION_ERROR.getMessage());
     }
 
     @Override
     public User updateUser(User updateUser) {
         Optional<User> optionalUser = userRepository.findById(updateUser.getId());
-        if (!optionalUser.isPresent()) throw new ResourceNotFoundException("User not found");
+        if (!optionalUser.isPresent()) throw new ResourceNotFoundException(format(USER_NOT_FOUND.getMessage(), updateUser.getId()));
 
         User user = optionalUser.get();
         user.setFirstName(updateUser.getFirstName());

@@ -1,7 +1,6 @@
 package com.demo.restaurant.controller;
 
 import com.demo.restaurant.model.Product;
-import com.demo.restaurant.service.CategoryService;
 import com.demo.restaurant.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

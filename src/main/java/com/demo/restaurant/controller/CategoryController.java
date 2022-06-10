@@ -1,6 +1,5 @@
 package com.demo.restaurant.controller;
 
-import com.demo.restaurant.exception.ResourceNotFoundException;
 import com.demo.restaurant.model.Category;
 import com.demo.restaurant.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-
 //It is added to the default route for all controllers within the class
 @RequestMapping("category/")
 public class CategoryController {
@@ -29,7 +26,7 @@ public class CategoryController {
     @GetMapping("{id}")
     @Operation(summary = "Buscar una categoria por ID")
     public Category getCategory(@PathVariable(value = "id") Long id) {
-        return categoryService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category not found"));
+        return categoryService.findById(id);
     }
 
     @PostMapping()
@@ -47,12 +44,6 @@ public class CategoryController {
     @DeleteMapping("{id}")
     @Operation(summary = "Eliminar categoria por ID")
     public Category deleteCategory(@PathVariable(value = "id") Long id) {
-        Optional<Category> optionalCategory = categoryService.findById(id);
-        if (optionalCategory.isPresent()) {
-            Category category = optionalCategory.get();
-            categoryService.deleteById(category.getId());
-            return category;
-        }
-        else throw new ResourceNotFoundException("Category not found");
+        return categoryService.deleteById(id);
     }
 }
