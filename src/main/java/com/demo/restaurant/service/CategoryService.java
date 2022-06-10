@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+//The service methods are declared but not the implementation
 @Service
 public interface CategoryService {
     Category save(Category category);

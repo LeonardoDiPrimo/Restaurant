@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+//Product repository, Extends from JpaRepository which generates the basic crud of the entity
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByName(String name);

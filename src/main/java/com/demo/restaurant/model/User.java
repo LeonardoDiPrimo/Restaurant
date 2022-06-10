@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+//Entity that corresponds to the table generated in the database
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

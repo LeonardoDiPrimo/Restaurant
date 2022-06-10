@@ -13,8 +13,10 @@ import java.util.Optional;
 @Service
 public class CategoryServiceImp implements CategoryService {
 
+    //Object instance to persist in the database
     private final CategoryRepository categoryRepository;
 
+    //Class constructor
     public CategoryServiceImp(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }

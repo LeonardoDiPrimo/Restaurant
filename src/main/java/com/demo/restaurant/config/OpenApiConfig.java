@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+//Swagger UI Basic Documentation
 public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI(@Value("1.6.8") String appVersion) {

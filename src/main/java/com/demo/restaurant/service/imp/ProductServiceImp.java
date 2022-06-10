@@ -12,9 +12,11 @@ import java.util.Optional;
 
 @Service
 public class ProductServiceImp implements ProductService {
-    
+
+    //Object instance to persist in the database
     private final ProductRepository productRepository;
 
+    //Class constructor
     public ProductServiceImp(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }

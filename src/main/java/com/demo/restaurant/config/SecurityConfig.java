@@ -9,8 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig {
 
+    //By using spring security, it blocks all routes without authentication
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
+        //This allows enter the Swagger UI interface without the need for a login
         return (web) -> web.ignoring().antMatchers("/**");
     }
 }

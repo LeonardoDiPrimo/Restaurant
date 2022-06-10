@@ -15,9 +15,13 @@ import java.util.Optional;
 @Service
 public class UserServiceImp implements UserService {
 
+    //Object instance to persist in the database
     private final UserRepository userRepository;
+
+    //Create instance of the object to encode the password
     private final BCryptPasswordEncoder passwordEncoder;
 
+    //Class constructor
     public UserServiceImp(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;

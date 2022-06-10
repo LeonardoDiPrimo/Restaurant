@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+//The service methods are declared but not the implementation
 @Service
 public interface UserService {
     List<User> findAll();
