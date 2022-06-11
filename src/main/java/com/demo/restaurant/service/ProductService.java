@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProductService {
     Product save(Product product);
     List<Product> findAll();
+    Product updateProduct(Product product);
+    List<Product> findProductByCategoryName(String categoryName);
 }

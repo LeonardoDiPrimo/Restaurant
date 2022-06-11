@@ -4,13 +4,11 @@ import com.demo.restaurant.model.Category;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 //The service methods are declared but not the implementation
 @Service
 public interface CategoryService {
     Category save(Category category);
-    Category deleteById(Long id);
     Category findById(Long id);
     List<Category> findAll();
     Category updateCategory (Category category);

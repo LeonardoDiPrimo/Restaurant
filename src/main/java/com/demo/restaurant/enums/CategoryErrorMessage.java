@@ -7,7 +7,7 @@ public enum CategoryErrorMessage {
 
     private final String message;
 
-    private CategoryErrorMessage(String message) {
+    CategoryErrorMessage(String message) {
         this.message = message;
     }
 

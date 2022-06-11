@@ -29,4 +29,16 @@ public class ProductController {
     public Product createProduct(@RequestBody Product product) {
         return productService.save(product);
     }
+
+    @PutMapping()
+    @Operation(summary = "Actualizar producto")
+    public Product updateCategory(@RequestBody Product product) {
+        return productService.updateProduct(product);
+    }
+
+    @GetMapping("{categoryName}")
+    @Operation(summary = "Filtrar productos no deprecados por nombre de categoria")
+    public List<Product> findByCategoryName(@PathVariable(value = "categoryName") String categoryName) {
+        return productService.findProductByCategoryName(categoryName);
+    }
 }

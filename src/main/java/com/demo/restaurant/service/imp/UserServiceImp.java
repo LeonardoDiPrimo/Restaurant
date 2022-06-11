@@ -39,20 +39,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User deleteById(Long id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (!user.getDeprecated()) {
-                user.setDeprecated(true);
-                userRepository.save(user);
-            }
-            return optionalUser.get();
-        }
-        else throw new ResourceNotFoundException(format(USER_NOT_FOUND.getMessage(), id));
-    }
-
-    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
@@ -75,7 +61,8 @@ public class UserServiceImp implements UserService {
         User user = optionalUser.get();
         user.setFirstName(updateUser.getFirstName());
         user.setLastName(updateUser.getLastName());
-
+        user.setIsAdmin(updateUser.getIsAdmin());
+        user.setDeprecated(updateUser.getDeprecated());
         return userRepository.save(user);
     }
 }

@@ -10,8 +10,6 @@ import java.util.List;
 public interface UserService {
     List<User> findAll();
     User save(User user);
-    User deleteById(Long id);
     User validateActiveUser(String email, String password);
     User updateUser(User user);
-
 }

@@ -7,7 +7,7 @@ public enum UserErrorMessage {
 
     private final String message;
 
-    private UserErrorMessage(String message) {
+    UserErrorMessage(String message) {
         this.message = message;
     }
 

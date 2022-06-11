@@ -33,13 +33,6 @@ public class CategoryServiceImp implements CategoryService {
     }
 
     @Override
-    public Category deleteById(Long id) {
-        Category category = findById(id);
-        categoryRepository.deleteById(category.getId());
-        return category;
-    }
-
-    @Override
     public Category findById(Long id) {
         return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(format(CATEGORY_NOT_FOUND.getMessage(), id)));
     }

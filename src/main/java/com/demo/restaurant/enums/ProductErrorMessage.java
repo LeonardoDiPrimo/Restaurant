@@ -1,11 +1,12 @@
 package com.demo.restaurant.enums;
 
 public enum ProductErrorMessage {
-    PRODUCT_DUPLICATE("Product with name (%s) already exists.");
+    PRODUCT_DUPLICATE("Product with name (%s) already exists."),
+    PRODUCT_NOT_FOUND("Error searching product with ID (%s).");
 
     private final String message;
 
-    private ProductErrorMessage(String message) {
+    ProductErrorMessage(String message) {
         this.message = message;
     }
 

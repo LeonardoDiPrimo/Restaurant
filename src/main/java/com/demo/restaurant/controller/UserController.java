@@ -36,12 +36,6 @@ public class UserController {
         return userService.validateActiveUser(email, password);
     }
 
-    @PutMapping("delete/{id}")
-    @Operation(summary = "Eliminar usuario por ID")
-    public User deleteUser(@PathVariable(value = "id") Long id) {
-        return userService.deleteById(id);
-    }
-
     @PutMapping()
     @Operation(summary = "Actualizar usuario")
     public User UpdateUser(User user) {

@@ -40,10 +40,4 @@ public class CategoryController {
     public Category updateCategory(@RequestBody Category category) {
        return categoryService.updateCategory(category);
     }
-
-    @DeleteMapping("{id}")
-    @Operation(summary = "Eliminar categoria por ID")
-    public Category deleteCategory(@PathVariable(value = "id") Long id) {
-        return categoryService.deleteById(id);
-    }
 }
