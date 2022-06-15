@@ -6,11 +6,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 //It is added to the default route for all controllers within the class
 @RequestMapping("category/")
+@CrossOrigin
 public class CategoryController {
 
     //Create an instance of the class in which the service logic is located
@@ -31,13 +33,13 @@ public class CategoryController {
 
     @PostMapping()
     @Operation(summary = "Crear categoria")
-    public Category createCategory(@RequestBody Category category) {
+    public Category createCategory(@Valid @RequestBody Category category) {
         return categoryService.save(category);
     }
 
     @PutMapping()
     @Operation(summary = "Actualizar categoria")
-    public Category updateCategory(@RequestBody Category category) {
+    public Category updateCategory(@Valid @RequestBody Category category) {
        return categoryService.updateCategory(category);
     }
 }

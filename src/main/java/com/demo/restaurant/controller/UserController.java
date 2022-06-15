@@ -6,12 +6,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-
 //It is added to the default route for all controllers within the class
 @RequestMapping("user/")
+@CrossOrigin
 public class UserController {
 
     //Create an instance of the class in which the service logic is located
@@ -20,7 +21,7 @@ public class UserController {
 
     @PostMapping()
     @Operation(summary = "Crear usuario")
-    public User createUser(@RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) {
         return userService.save(user);
     }
 
@@ -38,7 +39,7 @@ public class UserController {
 
     @PutMapping()
     @Operation(summary = "Actualizar usuario")
-    public User UpdateUser(User user) {
+    public User UpdateUser(@Valid @RequestBody User user) {
         return userService.updateUser(user);
     }
 }
