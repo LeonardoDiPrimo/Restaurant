@@ -65,4 +65,11 @@ public class UserServiceImp implements UserService {
         user.setDeprecated(updateUser.getDeprecated());
         return userRepository.save(user);
     }
+
+    @Override
+    public User findById(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if (!optionalUser.isPresent()) throw new ResourceNotFoundException(format(USER_NOT_FOUND.getMessage(), userId));
+        return optionalUser.get();
+    }
 }

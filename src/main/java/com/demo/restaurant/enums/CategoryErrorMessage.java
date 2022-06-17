@@ -1,9 +1,9 @@
 package com.demo.restaurant.enums;
 
 public enum CategoryErrorMessage {
-    CATEGORY_NOT_FOUND("Error searching category with ID (%s)."),
-    CATEGORY_DUPLICATE("Category with name (%s) already exists."),
-    CATEGORY_DEPRECATED("Error the category is deprecated");
+    CATEGORY_NOT_FOUND("Error al buscar categoría con ID (%s)."),
+    CATEGORY_DUPLICATE("La categoría con nombre (%s) ya existe."),
+    CATEGORY_DEPRECATED("Error la categoría (%s) está eliminada.");
 
     private final String message;
 

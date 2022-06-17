@@ -12,4 +12,5 @@ public interface UserService {
     User save(User user);
     User validateActiveUser(String email, String password);
     User updateUser(User user);
+    User findById(Long userId);
 }

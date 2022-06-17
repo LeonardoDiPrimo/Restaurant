@@ -1,12 +1,13 @@
 package com.demo.restaurant.model;
 
+import com.demo.restaurant.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
-import java.util.List;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,10 +20,14 @@ public class Purchase {
     private Long id;
 
     @NonNull
-    private int userId;
+    private Long userId;
 
-    @OneToMany(targetEntity=Product.class )
-    private List<Product> productList;
+    @NonNull
+    private double price;
 
-    private double amount;
+    @NonNull
+    private LocalDate dateOfPurchase;
+
+    @NonNull
+    private State state;
 }

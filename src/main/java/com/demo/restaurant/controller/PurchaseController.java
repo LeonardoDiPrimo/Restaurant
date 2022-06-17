@@ -1,6 +1,7 @@
 package com.demo.restaurant.controller;
 
 import com.demo.restaurant.model.Purchase;
+import com.demo.restaurant.model.PurchaseMapper;
 import com.demo.restaurant.service.PurchaseService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class PurchaseController {
 
     @PostMapping()
     @Operation(summary = "Crear Compra")
-    public Purchase createPurchase(@Valid @RequestBody Purchase purchase) {
-        return purchaseService.save(purchase);
+    public Purchase createPurchase(@Valid @RequestBody PurchaseMapper purchaseMapper) {
+        return purchaseService.save(purchaseMapper);
     }
 
 }

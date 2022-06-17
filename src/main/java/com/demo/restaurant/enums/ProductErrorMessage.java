@@ -1,8 +1,9 @@
 package com.demo.restaurant.enums;
 
 public enum ProductErrorMessage {
-    PRODUCT_DUPLICATE("Product with name (%s) already exists."),
-    PRODUCT_NOT_FOUND("Error searching product with ID (%s).");
+    PRODUCT_DUPLICATE("El producto con nombre (%s) ya existe."),
+    PRODUCT_NOT_FOUND("Error al buscar producto con ID (%s)."),
+    PRODUCT_DEPRECATED("El producto (%s) esta eliminado.");
 
     private final String message;
 

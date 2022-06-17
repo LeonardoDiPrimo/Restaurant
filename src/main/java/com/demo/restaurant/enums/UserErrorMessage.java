@@ -1,9 +1,10 @@
 package com.demo.restaurant.enums;
 
 public enum UserErrorMessage {
-    USER_DUPLICATE("User with email (%s) already exists."),
-    USER_NOT_FOUND("Error searching user with ID (%s)."),
-    USER_AUTHENTICATION_ERROR("Unauthorized user.");
+    USER_DUPLICATE("El usuario con correo electrónico (%s) ya existe."),
+    USER_NOT_FOUND("Error al buscar usuario con ID (%s)."),
+    USER_AUTHENTICATION_ERROR("Usuario no Autorizado."),
+    USER_DEPRECATED("Error el usuario está eliminado.");
 
     private final String message;
 

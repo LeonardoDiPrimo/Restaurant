@@ -1,6 +1,7 @@
 package com.demo.restaurant.service;
 
 import com.demo.restaurant.model.Purchase;
+import com.demo.restaurant.model.PurchaseMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Service
 public interface PurchaseService {
     List<Purchase> findAll();
-    Purchase save(Purchase purchase);
+    Purchase save(PurchaseMapper purchaseMapper);
     List<Purchase> findPurchasesByUserId (int userId);
 
 }
