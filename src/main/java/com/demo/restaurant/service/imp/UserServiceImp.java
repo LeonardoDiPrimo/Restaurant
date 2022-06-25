@@ -45,6 +45,20 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User validateActiveUser(String email, String password) {
+        //Create default admin user
+        List<User> userList = userRepository.findAll();
+
+        if (userList.isEmpty()) {
+            User user = new User();
+            user.setFirstName("ADMIN");
+            user.setLastName("ADMIN");
+            user.setEmail("admin@gmail.com");
+            user.setPassword("1234");
+            user.setIsAdmin(true);
+            user.setDeprecated(false);
+            this.save(user);
+        }
+
         Optional<User> optionalUser = userRepository.findByEmail(email);
 
         if (optionalUser.isPresent() && passwordEncoder.matches(password, optionalUser.get().getPassword()) &&
