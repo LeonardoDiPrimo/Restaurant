@@ -1,5 +1,7 @@
 package com.demo.restaurant.controller;
 
+import com.demo.restaurant.enums.State;
+import com.demo.restaurant.model.Product;
 import com.demo.restaurant.model.Purchase;
 import com.demo.restaurant.model.PurchaseMapper;
 import com.demo.restaurant.service.PurchaseService;
@@ -36,6 +38,12 @@ public class PurchaseController {
     @Operation(summary = "Crear Compra")
     public Purchase createPurchase(@Valid @RequestBody PurchaseMapper purchaseMapper) {
         return purchaseService.save(purchaseMapper);
+    }
+
+    @PutMapping("updateStatus")
+    @Operation(summary = "Actualizar Estado de la compra")
+    public Purchase updateCategory(Long purchaseId, State state) {
+        return purchaseService.updateStatus(purchaseId, state);
     }
 
 }

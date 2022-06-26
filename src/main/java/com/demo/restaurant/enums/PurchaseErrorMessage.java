@@ -3,7 +3,8 @@ package com.demo.restaurant.enums;
 public enum PurchaseErrorMessage {
     PURCHASE_ERROR("Error al realizar la compra."),
     AMOUNT_ERROR("La cantidad del producto %s tiene que ser mayor a 0."),
-    STOCK_ERROR("El stock actual del producto %s es %s y se está intentando realizar una compra de %s.");
+    STOCK_ERROR("El stock actual del producto %s es %s y se está intentando realizar una compra de %s."),
+    PURCHASE_NOT_FOUND("La venta con id (%s) no fue encontrada.");
 
     private final String message;
 

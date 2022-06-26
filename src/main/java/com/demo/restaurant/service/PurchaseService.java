@@ -1,5 +1,6 @@
 package com.demo.restaurant.service;
 
+import com.demo.restaurant.enums.State;
 import com.demo.restaurant.model.Purchase;
 import com.demo.restaurant.model.PurchaseMapper;
 import org.springframework.stereotype.Service;
@@ -12,5 +13,6 @@ public interface PurchaseService {
     List<Purchase> findAll();
     Purchase save(PurchaseMapper purchaseMapper);
     List<Purchase> findPurchasesByUserId (int userId);
+    Purchase updateStatus(Long purchaseId, State state);
 
 }
